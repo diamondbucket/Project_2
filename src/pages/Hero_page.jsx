@@ -6,12 +6,17 @@ import bottle from "../assets/bottle_with_top_high_res.png";
 
 const Hero_page = () => {
   return (
-    <div className="relative bg-white w-screen h-screen">
+    <div className="relative bg-white w-screen h-screen overflow-hidden">
       <Navbar />
       <div className="translate-y-48">
         <ConcentricCircles />
       </div>
-      <img src={bottle} />
+      <div className="translate-x-80">
+        <img
+          src={bottle}
+          className="-translate-y-full translate-x-3/4 h-full"
+        />
+      </div>
     </div>
   );
 };
