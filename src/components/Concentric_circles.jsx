@@ -16,9 +16,10 @@ const Circle = ({ size, color }) => {
 
 const ConcentricCircles = () => {
   const circles = [
-    { size: 800, color: "#cfcfcf" },
-    { size: 650, color: "#afafad" },
-    { size: 450, color: "#787876" },
+    { size: 650, color: "#cfcfcf" },
+    { size: 500, color: "#afafad" },
+    { size: 350, color: "#787876" },
+    { size: 50, color: "black" },
   ];
 
   return (
