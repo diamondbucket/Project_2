@@ -6,7 +6,7 @@ import bottle from "../assets/bottle_with_top_high_res.png";
 
 const Hero_page = () => {
   return (
-    <div className=" w-screen h-1vh overflow-hidden">
+    <div className=" w-screen h-full justify-center items-center overflow-hidden">
       <Navbar />
       <div className="translate-y-16">
         <ConcentricCircles />
