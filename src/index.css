@@ -1,5 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Geo:ital@0;1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Geo:ital@0;1&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#circle {
+  position: relative;
+}
+
+#circle.expand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(10); /* Adjust the scale value as needed */
+  width: 16rem;
+  height: 16rem;
+  border-radius: 50%;
+  transition: transform 0.8s ease-in-out, width 0.8s ease-in-out,
+    height 0.8s ease-in-out;
+}
+
+html,
+body {
+  overflow: hidden;
+}

@@ -1,23 +1,20 @@
 import React from "react";
-import Logo from "../assets/logo_2.svg";
-import { Navbar } from "../components/Navbar";
-import ConcentricCircles from "../components/Concentric_circles";
-import bottle from "../assets/bottle_with_top_high_res.png";
+import logo_2 from "../assets/logo_2.svg";
+import ResponsiveMiniNav from "../components/responsive_mini_nav";
+import Navbar from "../components/responsive_mini_nav";
 
-const Hero_page = () => {
+const HeroPage = () => {
   return (
-    <div className=" w-screen h-full justify-center items-center overflow-hidden">
-      <Navbar />
-      <div className="translate-y-16">
-        <ConcentricCircles />
-      </div>
-      <div className="translate-x-80">
-        <img
-          src={bottle}
-          className="-translate-y-full transform rotate-19 translate-x-[300px] h-full"/>
+    <div className="relative h-screen w-screen bg-black">
+      <div className="relative bg-white w-screen h-20 flex flex-row justify-between items-center px-4 border-b-2  border-gray-300">
+        <img src={logo_2} alt="Logo" className="w-20 h-auto" />
+        <Navbar />
+        <button className="bg-black rounded-full w-28 h-10 px-4 text-white flex items-center justify-center">
+          <h1>Order Now</h1>
+        </button>
       </div>
     </div>
   );
 };
 
-export default Hero_page;
+export default HeroPage;
