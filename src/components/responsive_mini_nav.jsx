@@ -9,10 +9,7 @@ const ResponsiveMiniNav = () => {
 
   return (
     <div className="flex  justify-between w-96 items-center h-screen ">
-      {" "}
-      {/* Container */}
-      <div className="relative">
-        {/* Toggle button for small screens */}
+      <div className="relative w-96">
         <button
           className=" md:hidden  text-black font-[popppins] text-xl p-2 rounded"
           onClick={toggleMenu}
