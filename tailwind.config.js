@@ -8,6 +8,10 @@ export default {
       },
       colors: {
         "custom-grey": "#949198",
+        "custom-grey-2": "#969696"
+      },
+      backgroundImage: {
+        'radial-gradient-custom': 'radial-gradient(circle, #0e0e0e, black)',
       },
       fontFamily: {
         "font-geo": ["Geo", "sans-serif"],

@@ -3,6 +3,8 @@ import logo_2 from "../assets/logo_2.svg";
 import Navbar from "../components/responsive_mini_nav";
 import Circle from "../components/Circle";
 import bottle from "../assets/bottle_with_top_high_res.png";
+import Third_page from "./Third_page";
+import Footer from "./Footer";
 
 const ConcentricCircles = ({ circles }) => {
   return (
@@ -22,7 +24,7 @@ const HeroPage = () => {
   const [showText, setShowText] = useState(false);
 
   const handleBottleClick = () => {
-    setBlackCircleSize(Math.max(window.innerWidth, window.innerHeight) * 2);
+    setBlackCircleSize(Math.max(window.innerWidth, window.innerHeight) * 1.3);
     setBottlePosition("top-0 right-10 rotate-0");
     setTimeout(() => setShowText(true), 200); // Delay showing the text to match the circle's animation
   };
@@ -35,7 +37,8 @@ const HeroPage = () => {
   ];
 
   return (
-    <div className="relative h-screen w-screen bg-white overflow-hidden">
+    <div className="relative h-screen w-screen overflow-x-hidden">
+      <div className="relative h-screen w-screen bg-white ">
       <div className="relative bg-white w-screen h-20 flex flex-row justify-between items-center px-4 border-b-2 border-gray-300">
         <img src={logo_2} alt="Logo" className="w-20 h-auto" />
         <Navbar />
@@ -74,6 +77,9 @@ const HeroPage = () => {
       <div className="absolute -translate-x-5 inset-0 flex items-center top-96 justify-center">
         <ConcentricCircles circles={circles} />
       </div>
+      </div>
+      <Third_page />
+      <Footer />
     </div>
   );
 };
