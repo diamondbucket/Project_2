@@ -45,22 +45,33 @@ const HeroPage = () => {
       </div>
       {showText && (
         <div className="absolute left-10 text-8xl translate-y-20 font-bold z-20 text-center">
-          <p className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-900 via-zinc-400 to-white translate-x-3">
+          <p className="text-transparent bg-clip-text bg-gradient-to-r from-[#222222] via-[#848484] to-white translate-x-3">
             FIND YOUR QUALITY
           </p>
-          <p className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-900 via-zinc-400 to-white -translate-x-28">
-            WATER BOTTLE
-          </p>
+          <div className="translate-x-4 w-fit">
+            <p className="text-transparent bg-clip-text bg-gradient-to-r from-[#222222] via-[#848484] to-zinc-400 ">
+              WATER BOTTLE
+            </p>
+          </div>
+          <div className="w-fit text-white text-4xl font-normal translate-y-10 translate-x-6 ">
+            <p className="w-auto">Made exlusive for our champs that are</p>
+            <p>constantly out in the sun working hard</p>
+            <div className="translate-y-full">
+              <button className="bg-black text-white px-8 py-6 rounded-full border-8 text-4xl  border-[#363634]">
+                ORDER NOW
+              </button>
+            </div>
+          </div>
         </div>
       )}
       <div className="w-auto h-auto flex flex-col items-center cursor-pointer">
         <img
           src={bottle}
-          className={`absolute h-[800px] ${bottlePosition} z-10 transition-transform duration-600 ease-out`}
+          className={`absolute h-[800px] ${bottlePosition}  z-10 transition-transform duration-600 ease-out`}
           onClick={handleBottleClick}
         />
       </div>
-      <div className="absolute inset-0 flex items-center top-96 justify-center">
+      <div className="absolute -translate-x-5 inset-0 flex items-center top-96 justify-center">
         <ConcentricCircles circles={circles} />
       </div>
     </div>
