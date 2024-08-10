@@ -19,10 +19,12 @@ const HeroPage = () => {
   const [bottlePosition, setBottlePosition] = useState(
     "top-32 left-1/2 -translate-x-1/2 rotate-12"
   );
+  const [showText, setShowText] = useState(false);
 
   const handleBottleClick = () => {
     setBlackCircleSize(Math.max(window.innerWidth, window.innerHeight) * 2);
-    setBottlePosition("top-0 right-10 rotate-0"); // Move bottle up, to the right, and undo rotation
+    setBottlePosition("top-0 right-10 rotate-0");
+    setTimeout(() => setShowText(true), 200); // Delay showing the text to match the circle's animation
   };
 
   const circles = [
@@ -41,6 +43,16 @@ const HeroPage = () => {
           <h1>Order Now</h1>
         </button>
       </div>
+      {showText && (
+        <div className="absolute left-10 text-8xl translate-y-20 font-bold z-20 text-center">
+          <p className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-900 via-zinc-400 to-white translate-x-3">
+            FIND YOUR QUALITY
+          </p>
+          <p className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-900 via-zinc-400 to-white -translate-x-28">
+            WATER BOTTLE
+          </p>
+        </div>
+      )}
       <div className="w-auto h-auto flex flex-col items-center cursor-pointer">
         <img
           src={bottle}
