@@ -8,7 +8,6 @@ const App = () => {
     <div>
       <Hero_page />
       <Third_page />
-   
     </div>
   );
 };

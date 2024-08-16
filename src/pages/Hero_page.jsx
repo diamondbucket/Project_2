@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import logo_2 from "../assets/logo_2.svg";
 import Navbar from "../components/responsive_mini_nav";
 import Circle from "../components/Circle";
 import bottle from "../assets/bottle_with_top_high_res.png";
 import Third_page from "./Third_page";
 import Footer from "./Footer";
-import SecondPage from "./Second_page"; // Import SecondPage here
+import SecondPage from "./Second_page";
 
 const ConcentricCircles = ({ circles }) => {
   return (
@@ -17,24 +17,6 @@ const ConcentricCircles = ({ circles }) => {
   );
 };
 
-const ScrollTracker = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-
-    // Add the event listener when the component mounts
-    window.addEventListener("scroll", handleScroll);
-
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-};
-
 const HeroPage = () => {
   const [blackCircleSize, setBlackCircleSize] = useState(50);
   const [bottlePosition, setBottlePosition] = useState(
@@ -42,14 +24,55 @@ const HeroPage = () => {
   );
   const [showText, setShowText] = useState(false);
   const [isScrollable, setScrollability] = useState(false);
-  // const []
+  const [scrollPosition, setScrollPosition] = useState(0); // State to track scroll position
+  const scrollableContainerRef = useRef(null); // Reference for the scrollable container
+
+  let currentScrollValue = 0; // Variable to store the scroll value
 
   const handleBottleClick = () => {
     setBlackCircleSize(Math.max(window.innerWidth, window.innerHeight) * 1.3);
-    setBottlePosition("top-0 right-10 rotate-0");
+    setBottlePosition(`top-0 right-10 rotate-0`);
     setTimeout(() => setShowText(true), 200); // Delay showing the text to match the circle's animation
     setScrollability(true);
   };
+
+  const handleBottlescroll = () => {
+    // Delay showing the text to match the circle's animation
+    setBottlePosition(
+      `top-0 right-10 translate-y-[750px] -translate-x-[390px] h-[500px] rotate-19`
+    );
+  };
+
+  const handleScroll_1 = () => {
+    if (scrollableContainerRef.current) {
+      const scrollTop = scrollableContainerRef.current.scrollTop;
+      setScrollPosition(scrollTop); // Update state
+
+      if (scrollTop === 0) {
+        setBottlePosition("top-0 right-10 rotate-0"); // Call the function to handle the bottle's position
+      } else {
+        handleBottlescroll();
+        // Other scroll position handling
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scrollableContainerRef.current) {
+        const scrollTop = scrollableContainerRef.current.scrollTop;
+        setScrollPosition(scrollTop); // Update state
+        currentScrollValue = scrollTop; // Store in a variable
+        console.log("Current Scroll Value:", currentScrollValue); // Optional: Log to the console
+      }
+    };
+
+    const container = scrollableContainerRef.current;
+    container.addEventListener("scroll", handleScroll);
+    return () => {
+      container.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const circles = [
     { size: 600, color: "rgba(207,207,207,255)" },
@@ -60,9 +83,11 @@ const HeroPage = () => {
 
   return (
     <div
+      ref={scrollableContainerRef}
       className={`relative h-screen w-screen ${
         isScrollable ? "overflow-y-auto" : "overflow-y-hidden"
       } overflow-x-hidden`}
+      onScroll={handleScroll_1}
     >
       <div className="relative h-screen w-screen bg-white">
         <div className="relative bg-white w-screen h-20 flex flex-row justify-between items-center px-4 border-b-2 border-gray-300">

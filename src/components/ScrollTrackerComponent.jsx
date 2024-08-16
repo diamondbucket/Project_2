@@ -1,17 +1,31 @@
 import React, { useState, useEffect } from "react";
 
-// inside component:
+const ScrollTriggerExample = () => {
+  const [isTriggered, setIsTriggered] = useState(false);
 
-const [scrollPosition, setScrollPosition] = useState(0);
-const handleScroll = () => {
-  const position = window.pageYOffset;
-  setScrollPosition(position);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsTriggered(true);
+      } else {
+        setIsTriggered(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <div className="relative w-screen h-auto">
+      <header style={{ backgroundColor: isTriggered ? "red" : "transparent" }}>
+        
+      </header>
+    </div>
+  );
 };
 
-useEffect(() => {
-  window.addEventListener("scroll", handleScroll, { passive: true });
-
-  return () => {
-    window.removeEventListener("scroll", handleScroll);
-  };
-}, []);
+export default ScrollTriggerExample;
